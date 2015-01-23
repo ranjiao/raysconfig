@@ -29,7 +29,7 @@
 (global-set-key (kbd "C-c b") 'pop-global-mark)
 
 ;; it's ok in unity, but not working in windows and gnome3
-(global-set-key [f11] 'toggle-fullscreen)
+;(global-set-key [f11] 'toggle-fullscreen)
 
 ;; gtags keys
 (global-set-key (kbd "C-c s") 'gtags-find-tag)
