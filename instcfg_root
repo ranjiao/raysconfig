@@ -1,0 +1,11 @@
+#!/bin/bash
+# This script will copy all the configure files into your system
+
+issue=`cat /etc/issue`
+
+echo "Copying configures to /root"
+sudo cp .bashrc .emacs .hgrc /root
+sudo cp bin ~/ -r
+
+sudo mkdir /root/proj/work/raysconfig -p
+sudo cp .* /root/proj/work/raysconfig

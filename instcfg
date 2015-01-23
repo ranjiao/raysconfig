@@ -1,0 +1,16 @@
+#!/bin/bash
+# This script will copy all the configure files into your system
+
+echo "Copying all the configures..."
+
+issue=`cat /etc/issue`
+
+echo "Copying configures to $HOME"
+cp .tmux.conf .bashrc .hgrc ~/
+cp bin ~/ -r
+cp myemacs/_emacs_linux ~/.emacs
+
+if [ ! -e ~/proj/work/raysconfig/myemacs/snippets ]
+then
+  mkdir ~/proj/work/raysconfig/myemacs/snippets
+fi

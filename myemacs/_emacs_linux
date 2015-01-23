@@ -1,0 +1,5 @@
+(defconst is-at-office t)
+
+;; Load the real .emacs
+(load-file "~/proj/work/raysconfig/.emacs")
+

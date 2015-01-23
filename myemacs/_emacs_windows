@@ -1,0 +1,9 @@
+;; Copy this file to %APPDATA% folder for windows
+
+;;set the default file path
+(setq default-directory "d:/")
+
+(defconst is-at-office t)
+
+;; Load the real .emacs
+(load-file "d:/proj/work/raysconfig/.emacs")

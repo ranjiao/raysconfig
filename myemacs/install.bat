@@ -1,0 +1,1 @@
+copy _emacs_windows %USERPROFILE%\AppData\Roaming\.emacs

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+listen_port=8888
+if [[ `which system_profiler` != '' ]]; then
+	os=mac
+fi
+
+kill_proxy(){
+	if [[ os == 'mac' ]]; then
+		pid=`lsof -n -i4TCP:$listen_port | grep LISTEN | cut -d' ' -f 8`
+		if [[ pid == '' ]]; then
+			echo "cannot find proxy pricess"
+			return 1
+		else
+			kill $pid
+			return 0
+		fi
+	else
+	 killall ssh
+	fi
+}
+
+case "$1" in
+     start)
+        echo "Starting ssh proxy"
+				ssh -c blowfish-cbc -qTfnN -i ~/.ssh/id_rsa -D $listen_port raymond@ranjiao.com
+        ;;
+     stop)
+        echo "Stopping ssh proxy"
+				kill_proxy
+        ;;
+     restart)
+        echo "Restarting ssh proxy"
+				kill_proxy
+				ssh -c blowfish-cbc -qTfnN -i ~/.ssh/id_rsa -D $listen_port raymond@ranjiao.com
+        ;;
+     *)
+        echo "usage: $0 {start|stop|restart}"
+esac
+exit 0

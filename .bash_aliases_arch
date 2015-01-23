@@ -1,0 +1,13 @@
+. $HOME/proj/work/raysconfig/.bash_aliases
+
+#pacman aliases
+alias pac='sudo pacman -S'
+alias pacs="pacman -Sl | cut -d' ' -f2 | grep"
+alias pacr="sudo pacman -Rns"
+alias pacu="sudo pacman -Syu"
+alias paci="pacman -Si"
+alias pacl="pacman -Sl" # list all packages
+alias paco="pacman -Qo" # determin which package owns a given file
+alias pacf="pacman -Ql" # list all files of a package
+alias pacm="makepkg -fci" # make package from PKGBUILD
+

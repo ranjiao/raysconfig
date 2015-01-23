@@ -1,0 +1,6 @@
+#!/bin/bash
+find . -iname '*.[ch]' -exec cat {} \; \
+-o -iname '*.cpp' -exec cat {} \; \
+-o -iname '*.py' -exec cat {} \; \
+-o -iname '*.lua' -exec cat {} \; | wc -l
+
