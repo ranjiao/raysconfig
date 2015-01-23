@@ -161,4 +161,8 @@
 (global-set-key (kbd "C-c >") 'python-shift-right)
 (global-set-key (kbd "C-c <") 'python-shift-left)
 
-;(add-to-list 'term-bind-key-alist '("C-c C-e" . term-send-escape))
+;; helm
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(setq helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t)

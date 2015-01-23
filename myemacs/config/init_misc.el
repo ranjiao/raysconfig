@@ -4,7 +4,18 @@
 (when (< emacs-major-version 24)
    ;; For important compatibility libraries like cl-lib
    (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize) ;; You might already have this l
+(package-initialize)
+
+(require 'helm-config)
+(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-ff-file-name-history-use-recentf t)(helm-mode 1)
+(helm-mode 1)
+
+(require 'expand-region)
+(global-set-key (kbd "C-o") 'er/expand-region)
 
 ;; diable beep
 (setq visible-bell 1)
@@ -68,11 +79,6 @@
 (require 'undo-tree)
 (global-undo-tree-mode t)
 
-
-;; stop saving tramp buffers
-;; (add-hook 'desktop-save-hook 'tramp-cleanup-all-buffers)
-
-
 ;; auto revert log files
 (add-hook 'find-file-hook
           (lambda ()
@@ -114,12 +120,12 @@
 (require 'cg-mode)
 
 ;; use ido, used for C-c b and C-x C-f.
-(require 'ido)
-(ido-mode t)
-(setq
- ido-ignore-buffers '("\\` " "^\*compilation" "^\*GTAGS")
- ;; disable the confirmation for new file
- confirm-nonexistent-file-or-buffer nil)
+;; (require 'ido)
+;; (ido-mode t)
+;; (setq
+;;  ido-ignore-buffers '("\\` " "^\*compilation" "^\*GTAGS")
+;;  ;; disable the confirmation for new file
+;;  confirm-nonexistent-file-or-buffer nil)
 
 ;; reload emacs config
 (defun reload-configures()
@@ -287,19 +293,7 @@ linum-off. Also turns off numbering in starred modes like
 ;;;; EOF Tab Bar
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Auto restore
-;; Session, auto save emacs' statues
-;;(require 'session)
-;;(add-hook 'after-init-hook 'session-initialize)
-
-;; (when (require 'erc-compat nil t)
-;;   (defalias 'remove-if-not 'erc-remove-if-not)
-;;   (require 'wcy-desktop)
-;;   (wcy-desktop-init))
 (desktop-save-mode 1)
-;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Open file as root
