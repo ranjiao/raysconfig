@@ -506,3 +506,5 @@ occurence of CHAR."
                     :foreground "#c82829"
                     :background "#ffffff"
                     :box '(:line-width 2 :color "#c82829"))
+
+(setq desktop-path (list "." "~"))
