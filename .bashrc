@@ -42,9 +42,13 @@ export HISTSIZE=10000
 export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
 
-issue=`cat /etc/issue`
-[[ "$issue" == *Ubuntu* ]] && . ~/proj/work/raysconfig/.bash_aliases_ubuntu
-[[ "$issue" == *Arch* ]] && . ~/proj/work/raysconfig/.bash_aliases_arch
+if [[ `uname` == Darwin ]]; then
+	. ~/proj/work/raysconfig/.bash_aliases_mac
+else
+	issue=`cat /etc/issue`
+	[[ "$issue" == *Ubuntu* ]] && . ~/proj/work/raysconfig/.bash_aliases_ubuntu
+	[[ "$issue" == *Arch* ]] && . ~/proj/work/raysconfig/.bash_aliases_arch
+fi
 
 # extract archive
 extract() {
@@ -90,9 +94,3 @@ alias vi=vim
 
 PS1="\[\033[01;34m\][\u@\h]:\[\033[00;34m\]\w\n$\[\033[00m\]"
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
-
-### chsdir start ###
-. $HOME/proj/work/raysconfig/bin/chs_completion
-#export CHSDIR="{'n':'l'}"
-complete -o filenames -F _filedir_xspec file
-### chsdir finish. ###

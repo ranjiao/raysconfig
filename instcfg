@@ -3,11 +3,15 @@
 
 echo "Copying all the configures..."
 
-issue=`cat /etc/issue`
+if [[ `uname` == Drawin ]]; then
+	cp .bashrc ~/.profile
+else
+	cp .bashrc ~/
+fi
 
 echo "Copying configures to $HOME"
-cp .tmux.conf .bashrc .hgrc ~/
-cp bin ~/ -r
+cp .tmux.conf .bashrc ~/
+cp -r bin ~/
 cp myemacs/_emacs_linux ~/.emacs
 
 if [ ! -e ~/proj/work/raysconfig/myemacs/snippets ]
