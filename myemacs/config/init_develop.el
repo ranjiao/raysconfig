@@ -4,6 +4,17 @@
 (require 'hungry-delete)
 (global-hungry-delete-mode)
 
+;; go lang
+;; (require 'go-mode-load)
+;; (setenv "GOPATH""/opt/tiger/golib:/opt/tiger/goutil:/opt/tiger/gorecommend")
+
+(defun my-go-mode-hook ()
+  ;; Call Gofmt before saving
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  ;; Godef jump key binding
+  (local-set-key (kbd "M-.") 'godef-jump))
+(add-hook 'go-mode-hook 'my-go-mode-hook)
+
 ;; Put all auto save and backup files in one location
 (setq temprary-file-directory
       (concat config-base-path "backup"))
@@ -30,4 +41,3 @@
                                    (semantic-current-tag))
         (setq first (cdr (car (cdr alist)))))
     (semantic-mrub-switch-tags first)))
-

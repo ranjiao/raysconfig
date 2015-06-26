@@ -8,6 +8,11 @@
 
 (ac-fuzzy-complete)
 
+
+;; golang
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+
 ;; case insensitiviy
 (setq ac-ignore-case t)
 
