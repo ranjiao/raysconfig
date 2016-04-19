@@ -6,15 +6,16 @@
 (global-set-key [S-f2] 'hs-show-all)
 (global-set-key [f3] 'next-error)
 (global-set-key [f4] 'previous-error)
-(global-set-key [f5]
-                (defun toggle-ecb ()
-                  "toggle ecb windows."
-                  (interactive)
-                  (if (not (fboundp 'ecb-toggle-ecb-windows))
-                      (ecb-activate)
-                    (ecb-toggle-ecb-windows)
-                    (ecb-toggle-compile-window))
-                  ))
+;; (global-set-key [f5]
+;;                 (defun toggle-ecb ()
+;;                   "toggle ecb windows."
+;;                   (interactive)
+;;                   (if (not (fboundp 'ecb-toggle-ecb-windows))
+;;                       (ecb-activate)
+;;                     (ecb-toggle-ecb-windows)
+;;                     (ecb-toggle-compile-window))
+;;                   ))
+(global-set-key [f5] 'revert-buffer)
 (global-set-key [f6] 'gdb-many-windows)
 (global-set-key [f7] 'my-compile)
 (global-set-key [f8] 'ansi-term)
@@ -27,6 +28,8 @@
 
 ;; go back to the last mark
 (global-set-key (kbd "C-c b") 'pop-global-mark)
+
+(global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
 ;; it's ok in unity, but not working in windows and gnome3
 ;(global-set-key [f11] 'toggle-fullscreen)
